@@ -16,7 +16,7 @@ function getTweets() {
 	client.get('statuses/user_timeline', params, function(error, tweets, response){
 		if (!error) {
 			for (var i = 0; i < tweets.length; i++){
-				console.log(tweets[i].text + ' Created on: ' + tweets[i].created_at + '\n');
+				console.log(tweets[i].text + ' Created at: ' + tweets[i].created_at + '\n');
 			}
 			fs.appendFile('log.txt', '===================================================');
 		} else {
@@ -67,7 +67,6 @@ function getMovie() {
 			console.log('Plot: ' + movieData.Plot);
 			console.log('Actors: ' + movieData.Actors);
 			console.log('Rotten Tomatoes Rating: ' + movieData.tomatoUserRating);
-			console.log('Rotten Tomatoes URL: ' + movieData.tomatoURL);
 			fs.appendFile('log.txt', 'Title: ' + movieData.Title 
 							+ '\n' + 'Year: ' + movieData.Year 
 							+ '\n' + 'IMDB Rating: ' + movieData.imdbRating 
@@ -76,7 +75,6 @@ function getMovie() {
 							+ '\n' + 'Plot: ' + movieData.Plot 
 							+ '\n' + 'Actors: ' + movieData.Actors 
 							+ '\n' + 'Rotten Tomatoes Rating: ' + movieData.tomatoUserRating 
-							+ '\n' + 'Rotten Tomatoes URL: ' + movieData.tomatoURL 
 							+ '\n' + '=================================================================');
 		}
 		else {
@@ -94,6 +92,8 @@ function getRandom() {
 			var dataArray = data.split(',');
 			var argOne = dataArray[0];
 			var argTwo = dataArray[1];
+			console.log(argOne);
+			console.log(argTwo);
 				switch(argOne) {
 					case 'my-tweets':
 					getTweets();
@@ -107,7 +107,6 @@ function getRandom() {
 				}
 		}
 	});
-
 }
 
 switch(argOne) {
